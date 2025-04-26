@@ -33,47 +33,52 @@
     </style>
 </head>
 <body class="bg-gray-100 min-h-screen p-6">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <form method="POST" action="" class="bg-white p-8 rounded-2xl shadow-xl space-y-5">
-        <h2 class="text-3xl font-bold text-primary">🏡 Address Selector - Philippines</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-screen-lg mx-auto">
+        <form method="POST" action="" class="bg-white p-8 rounded-3xl shadow-xl space-y-6">
+            <h2 class="text-3xl font-bold text-primary"> PickaLugar - Philippines</h2>
 
-        <div>
-            <label class="label"><span class="label-text font-semibold">Region *</span></label>
-            <select name="region" id="region" class="select select-primary w-full"></select>
-            <input type="hidden" name="region_text" id="region-text" required>
-        </div>
+            <!-- Region -->
+            <div>
+                <label class="label"><span class="label-text font-semibold text-lg">Region *</span></label>
+                <select name="region" id="region" class="select select-primary w-full rounded-xl"></select>
+                <input type="hidden" name="region_text" id="region-text" required>
+            </div>
 
-        <div>
-            <label class="label"><span class="label-text font-semibold">Province *</span></label>
-            <select name="province" id="province" class="select select-primary w-full"></select>
-            <input type="hidden" name="province_text" id="province-text" required>
-        </div>
+            <!-- Province -->
+            <div>
+                <label class="label"><span class="label-text font-semibold text-lg">Province *</span></label>
+                <select name="province" id="province" class="select select-primary w-full rounded-xl"></select>
+                <input type="hidden" name="province_text" id="province-text" required>
+            </div>
 
-        <div>
-            <label class="label"><span class="label-text font-semibold">City / Municipality *</span></label>
-            <select name="city" id="city" class="select select-primary w-full"></select>
-            <input type="hidden" name="city_text" id="city-text" required>
-        </div>
+            <!-- City / Municipality -->
+            <div>
+                <label class="label"><span class="label-text font-semibold text-lg">City / Municipality *</span></label>
+                <select name="city" id="city" class="select select-primary w-full rounded-xl"></select>
+                <input type="hidden" name="city_text" id="city-text" required>
+            </div>
 
-        <div>
-            <label class="label"><span class="label-text font-semibold">Barangay *</span></label>
-            <select name="barangay" id="barangay" class="select select-primary w-full"></select>
-            <input type="hidden" name="barangay_text" id="barangay-text" required>
-        </div>
+            <!-- Barangay -->
+            <div>
+                <label class="label"><span class="label-text font-semibold text-lg">Barangay *</span></label>
+                <select name="barangay" id="barangay" class="select select-primary w-full rounded-xl"></select>
+                <input type="hidden" name="barangay_text" id="barangay-text" required>
+            </div>
 
-        <div>
-            <label class="label"><span class="label-text font-semibold">Street (Optional)</span></label>
-            <input type="text" name="street_text" id="street-text" class="input input-bordered input-accent w-full">
-        </div>
+            <!-- Street -->
+            <div>
+                <label class="label"><span class="label-text font-semibold text-lg">Street (Optional)</span></label>
+                <input type="text" name="street_text" id="street-text" class="input input-bordered input-accent w-full rounded-xl">
+            </div>
 
-        <div class="text-right">
-            <button type="submit" class="btn btn-accent w-full">Submit</button>
-        </div>
+            <div class="text-right">
+                <button type="submit" class="btn btn-accent w-full rounded-xl">Submit</button>
+            </div>
         </form>
 
-        <div class="bg-white p-4 rounded-2xl shadow-xl h-full">
-        <h3 class="text-xl font-semibold mb-3 text-primary">📍 Map Preview</h3>
-        <div id="map"></div>
+        <!-- Map -->
+        <div class="bg-white p-6 rounded-3xl shadow-xl h-full">
+            <div id="map" class="rounded-xl"></div>
         </div>
     </div>
 
@@ -117,6 +122,5 @@
         }
     });
 </script>
-
-<body>
+</body>
 </html>
