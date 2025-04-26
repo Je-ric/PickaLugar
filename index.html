@@ -1,93 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Location Selector - Philippines</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      plugins: [window.daisyui],
-      theme: {
-        extend: {
-          colors: {
-            primary: '#2563eb', 
-            accent: '#10b981', 
-          },
+    <meta charset="UTF-8">
+    <title>Location Selector - Philippines</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+        plugins: [window.daisyui],
+        theme: {
+            extend: {
+            colors: {
+                primary: '#2563eb', 
+                accent: '#10b981', 
+            },
+            },
         },
-      },
-    };
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/daisyui"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/daisyui"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-  <style>
-    #map {
-      height: 100%;
-      min-height: 500px;
-      border-radius: 1rem;
-    }
-  </style>
+    <style>
+        #map {
+        height: 100%;
+        min-height: 500px;
+        border-radius: 1rem;
+        }
+    </style>
 </head>
 <body class="bg-gray-100 min-h-screen p-6">
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-    <!-- Address Form -->
-    <form method="POST" action="" class="bg-white p-8 rounded-2xl shadow-xl space-y-5">
-      <h2 class="text-3xl font-bold text-primary">🏡 Address Selector - Philippines</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <form method="POST" action="" class="bg-white p-8 rounded-2xl shadow-xl space-y-5">
+        <h2 class="text-3xl font-bold text-primary">🏡 Address Selector - Philippines</h2>
 
-      <div>
-        <label class="label"><span class="label-text font-semibold">Region *</span></label>
-        <select name="region" id="region" class="select select-primary w-full"></select>
-        <input type="hidden" name="region_text" id="region-text" required>
-      </div>
+        <div>
+            <label class="label"><span class="label-text font-semibold">Region *</span></label>
+            <select name="region" id="region" class="select select-primary w-full"></select>
+            <input type="hidden" name="region_text" id="region-text" required>
+        </div>
 
-      <div>
-        <label class="label"><span class="label-text font-semibold">Province *</span></label>
-        <select name="province" id="province" class="select select-primary w-full"></select>
-        <input type="hidden" name="province_text" id="province-text" required>
-      </div>
+        <div>
+            <label class="label"><span class="label-text font-semibold">Province *</span></label>
+            <select name="province" id="province" class="select select-primary w-full"></select>
+            <input type="hidden" name="province_text" id="province-text" required>
+        </div>
 
-      <div>
-        <label class="label"><span class="label-text font-semibold">City / Municipality *</span></label>
-        <select name="city" id="city" class="select select-primary w-full"></select>
-        <input type="hidden" name="city_text" id="city-text" required>
-      </div>
+        <div>
+            <label class="label"><span class="label-text font-semibold">City / Municipality *</span></label>
+            <select name="city" id="city" class="select select-primary w-full"></select>
+            <input type="hidden" name="city_text" id="city-text" required>
+        </div>
 
-      <div>
-        <label class="label"><span class="label-text font-semibold">Barangay *</span></label>
-        <select name="barangay" id="barangay" class="select select-primary w-full"></select>
-        <input type="hidden" name="barangay_text" id="barangay-text" required>
-      </div>
+        <div>
+            <label class="label"><span class="label-text font-semibold">Barangay *</span></label>
+            <select name="barangay" id="barangay" class="select select-primary w-full"></select>
+            <input type="hidden" name="barangay_text" id="barangay-text" required>
+        </div>
 
-      <div>
-        <label class="label"><span class="label-text font-semibold">Street (Optional)</span></label>
-        <input type="text" name="street_text" id="street-text" class="input input-bordered input-accent w-full">
-      </div>
+        <div>
+            <label class="label"><span class="label-text font-semibold">Street (Optional)</span></label>
+            <input type="text" name="street_text" id="street-text" class="input input-bordered input-accent w-full">
+        </div>
 
-      <div class="text-right">
-        <button type="submit" class="btn btn-accent w-full">Submit</button>
-      </div>
-    </form>
+        <div class="text-right">
+            <button type="submit" class="btn btn-accent w-full">Submit</button>
+        </div>
+        </form>
 
-    <div class="bg-white p-4 rounded-2xl shadow-xl h-full">
-      <h3 class="text-xl font-semibold mb-3 text-primary">📍 Map Preview</h3>
-      <div id="map"></div>
+        <div class="bg-white p-4 rounded-2xl shadow-xl h-full">
+        <h3 class="text-xl font-semibold mb-3 text-primary">📍 Map Preview</h3>
+        <div id="map"></div>
+        </div>
     </div>
-  </div>
 
-  <script src="selector.js"></script>
-
-  <script>
-    const map = L.map('map').setView([13.41, 122.56], 6); 
-
+<script src="selector.js"></script>
+<script>
+    const map = L.map('map').setView([13.41, 122.56], 6); // Initial: Philippines
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
+        attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
     const marker = L.marker([13.41, 122.56]).addTo(map);
-  </script>
-</body>
+
+    // Function to geocode address using Nominatim
+    async function geocodeAddress(address) {
+        const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
+        const response = await fetch(url);
+        const data = await response.json();
+        return data.length > 0 ? { lat: data[0].lat, lon: data[0].lon } : null;
+    }
+
+    // On form submit
+    $('form').on('submit', async function (e) {
+        e.preventDefault(); // Prevent page reload
+
+        const region = $('#region option:selected').text();
+        const province = $('#province option:selected').text();
+        const city = $('#city option:selected').text();
+        const barangay = $('#barangay option:selected').text();
+        const street = $('#street-text').val();
+
+        const fullAddress = `${street}, ${barangay}, ${city}, ${province}, ${region}, Philippines`;
+
+        const location = await geocodeAddress(fullAddress);
+
+        if (location) {
+        const latlng = [parseFloat(location.lat), parseFloat(location.lon)];
+        marker.setLatLng(latlng);
+        map.setView(latlng, 14);
+        } else {
+        alert("Address not found. Try refining the details.");
+        }
+    });
+</script>
+
+<body>
 </html>
