@@ -1,4 +1,4 @@
-# Picka-Lugar-PH
+# PickaLugar-PH
 
 Picka-Lugar-PH is a fun and user-friendly address selector built for the **Philippines**. It allows users to easily choose their **region**, **province**, **city/municipality**, and **barangay** through a dynamic dropdown that integrates mapping.
 
