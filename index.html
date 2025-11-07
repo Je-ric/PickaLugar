@@ -1,126 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Location Selector - Philippines</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-        plugins: [window.daisyui],
-        theme: {
-            extend: {
-            colors: {
-                primary: '#2563eb', 
-                accent: '#10b981', 
-            },
-            },
-        },
-        };
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/daisyui"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <head>
+        <meta charset="UTF-8">
+        <title>Location Selector - Philippines</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                plugins: [window.daisyui],
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: '#059669', // Vibrant emerald green for lush landscapes
+                            accent: '#ea580c', // Bright orange for tropical sunsets
+                            secondary: '#0ea5e9', // Ocean blue for seas
+                            neutral: '#f3f4f6', // Light gray for balance
+                        },
+                        fontFamily: {
+                            sans: ['Poppins', 'ui-sans-serif', 'system-ui'],
+                        },
+                    },
+                },
+            };
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/daisyui"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="src/style.css">
+    </head>
+    <body class="bg-gray-100 min-h-screen p-6 cultural-pattern">
+        <div class="flex flex-col lg:flex-row gap-8 max-w-6xl mx-auto">
+            <form method="POST" action="" class="form-container bg-white p-8 rounded-3xl shadow-xl space-y-6 lg:w-1/3">
+                <div class="text-center mb-6">
+                    <div class="flex items-center justify-center gap-2 mb-2">
+                        <i class='bx bxs-map-pin text-5xl text-accent drop-shadow-md'></i>
+                        <h1 class="text-4xl font-bold text-primary">PickaLugar</h1>
+                    </div>
+                    <p class="text-m text-secondary">Discover the Vibrant Heart of the Philippines</p>
+                </div>
+                <!-- Region -->
+                <div>
+                    <label class="label">
+                        <span class="label-text font-semibold text-lg">Region *</span>
+                    </label>
+                    <select name="region" id="region" class="select select-primary w-full rounded-xl"></select>
+                    <input type="hidden" name="region_text" id="region-text" required>
+                </div>
+                <!-- Province -->
+                <div>
+                    <label class="label">
+                        <span class="label-text font-semibold text-lg">Province *</span>
+                    </label>
+                    <select name="province" id="province" class="select select-primary w-full rounded-xl"></select>
+                    <input type="hidden" name="province_text" id="province-text" required>
+                </div>
+                <!-- City / Municipality -->
+                <div>
+                    <label class="label">
+                        <span class="label-text font-semibold text-lg">City / Municipality *</span>
+                    </label>
+                    <select name="city" id="city" class="select select-primary w-full rounded-xl"></select>
+                    <input type="hidden" name="city_text" id="city-text" required>
+                </div>
+                <!-- Barangay -->
+                <div>
+                    <label class="label">
+                        <span class="label-text font-semibold text-lg">Barangay *</span>
+                    </label>
+                    <select name="barangay" id="barangay" class="select select-primary w-full rounded-xl"></select>
+                    <input type="hidden" name="barangay_text" id="barangay-text" required>
+                </div>
+                <!-- Street -->
+                <div>
+                    <label class="label">
+                        <span class="label-text font-semibold text-lg">Street (Optional)</span>
+                    </label>
+                    <input type="text" name="street_text" id="street-text" class="input input-bordered input-accent w-full rounded-xl">
+                </div>
+                <div class="text-right">
+                    <button type="submit" class="btn btn-accent w-full h-12 rounded-xl hover:bg-accent/80 transition-colors duration-300 shadow-lg text-lg font-semibold"> Submit </button>
+                </div>
+            </form>
 
-    <style>
-        #map {
-        height: 100%;
-        min-height: 500px;
-        border-radius: 1rem;
-        }
-    </style>
-</head>
-<body class="bg-gray-100 min-h-screen p-6">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-screen-lg mx-auto">
-        <form method="POST" action="" class="bg-white p-8 rounded-3xl shadow-xl space-y-6">
-            <h2 class="text-3xl font-bold text-primary"> PickaLugar - Philippines</h2>
 
-            <!-- Region -->
-            <div>
-                <label class="label"><span class="label-text font-semibold text-lg">Region *</span></label>
-                <select name="region" id="region" class="select select-primary w-full rounded-xl"></select>
-                <input type="hidden" name="region_text" id="region-text" required>
+
+            <!-- Map -->
+            <div class="map-container bg-white p-6 rounded-3xl shadow-xl w-full lg:w-2/3">
+                <div id="map" class="rounded-2xl w-full"></div>
             </div>
 
-            <!-- Province -->
-            <div>
-                <label class="label"><span class="label-text font-semibold text-lg">Province *</span></label>
-                <select name="province" id="province" class="select select-primary w-full rounded-xl"></select>
-                <input type="hidden" name="province_text" id="province-text" required>
-            </div>
 
-            <!-- City / Municipality -->
-            <div>
-                <label class="label"><span class="label-text font-semibold text-lg">City / Municipality *</span></label>
-                <select name="city" id="city" class="select select-primary w-full rounded-xl"></select>
-                <input type="hidden" name="city_text" id="city-text" required>
-            </div>
-
-            <!-- Barangay -->
-            <div>
-                <label class="label"><span class="label-text font-semibold text-lg">Barangay *</span></label>
-                <select name="barangay" id="barangay" class="select select-primary w-full rounded-xl"></select>
-                <input type="hidden" name="barangay_text" id="barangay-text" required>
-            </div>
-
-            <!-- Street -->
-            <div>
-                <label class="label"><span class="label-text font-semibold text-lg">Street (Optional)</span></label>
-                <input type="text" name="street_text" id="street-text" class="input input-bordered input-accent w-full rounded-xl">
-            </div>
-
-            <div class="text-right">
-                <button type="submit" class="btn btn-accent w-full rounded-xl">Submit</button>
-            </div>
-        </form>
-
-        <!-- Map -->
-        <div class="bg-white p-6 rounded-3xl shadow-xl h-full">
-            <div id="map" class="rounded-xl"></div>
         </div>
-    </div>
 
-<script src="selector.js"></script>
-<script>
-    const map = L.map('map').setView([13.41, 122.56], 6); // Initial: Philippines
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
 
-    const marker = L.marker([13.41, 122.56]).addTo(map);
 
-    // Function to geocode address using Nominatim
-    async function geocodeAddress(address) {
-        const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
-        const response = await fetch(url);
-        const data = await response.json();
-        return data.length > 0 ? { lat: data[0].lat, lon: data[0].lon } : null;
-    }
-
-    // On form submit
-    $('form').on('submit', async function (e) {
-        e.preventDefault(); // Prevent page reload
-
-        const region = $('#region option:selected').text();
-        const province = $('#province option:selected').text();
-        const city = $('#city option:selected').text();
-        const barangay = $('#barangay option:selected').text();
-        const street = $('#street-text').val();
-
-        const fullAddress = `${street}, ${barangay}, ${city}, ${province}, ${region}, Philippines`;
-
-        const location = await geocodeAddress(fullAddress);
-
-        if (location) {
-        const latlng = [parseFloat(location.lat), parseFloat(location.lon)];
-        marker.setLatLng(latlng);
-        map.setView(latlng, 14);
-        } else {
-        alert("Address not found. Try refining the details.");
-        }
-    });
-</script>
-</body>
+        <script src="src/selector.js"></script>
+        <script>
+            const map = L.map('map').setView([13.41, 122.56], 6); // Initial: Philippines
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
+            const marker = L.marker([13.41, 122.56]).addTo(map);
+            // Function to geocode address using Nominatim
+            async function geocodeAddress(address) {
+                const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
+                const response = await fetch(url);
+                const data = await response.json();
+                return data.length > 0 ? {
+                    lat: data[0].lat,
+                    lon: data[0].lon
+                } : null;
+            }
+            // On form submit
+            $('form').on('submit', async function(e) {
+                e.preventDefault(); // Prevent page reload
+                const region = $('#region option:selected').text();
+                const province = $('#province option:selected').text();
+                const city = $('#city option:selected').text();
+                const barangay = $('#barangay option:selected').text();
+                const street = $('#street-text').val();
+                const fullAddress = `${street}, ${barangay}, ${city}, ${province}, ${region}, Philippines`;
+                const location = await geocodeAddress(fullAddress);
+                if (location) {
+                    const latlng = [parseFloat(location.lat), parseFloat(location.lon)];
+                    marker.setLatLng(latlng);
+                    map.setView(latlng, 14);
+                } else {
+                    alert("Address not found. Try refining the details.");
+                }
+            });
+        </script>
+    </body>
 </html>

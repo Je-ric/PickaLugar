@@ -1,0 +1,72 @@
+body {
+  background: linear-gradient(135deg, #ecfdf5 0%, #cffafe 50%, #fef3c7 100%);
+  /* Vibrant gradient: green to blue to yellow, evoking forests, seas, and beaches */
+  /* font-family: "Poppins", sans-serif; */
+    font-family: 'Baloo 2', cursive;
+  
+}
+
+h1, h2, h3 {
+    font-family: 'Baloo 2', cursive;
+}
+
+#map {
+  height: 100%;
+  min-height: 500px;
+}
+
+.form-container {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(240, 253, 244, 0.9)
+  );
+  /* Subtle green-tinted white */
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(5, 150, 105, 0.2);
+  /* Emerald border */
+}
+
+.map-container {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(224, 242, 254, 0.9)
+  );
+  /* Subtle blue-tinted white */
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(14, 165, 233, 0.2);
+  /* Ocean blue border */
+}
+
+.cultural-pattern {
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"viewBox="0 0 100 100"> <path d="M50 10 L60 40 L90 40 L68 58 L78 88 L50 70 L22 88 L32 58 L10 40 L40 40 Z"fill="%23059669"opacity="0.05"/> <circle cx="50"cy="50"r="3"fill="%23ea580c"opacity="0.1"/> <circle cx="25"cy="25"r="2"fill="%230ea5e9"opacity="0.1"/> <circle cx="75"cy="75"r="2"fill="%23059669"opacity="0.1"/> </svg>'); /* Subtle pattern with stars (for Philippine flag inspiration but not colors) and dots */
+  background-size: 60px 60px;
+}
+
+.label-text {
+  color: #059669;
+  /* Vibrant green for labels */
+}
+
+.btn-accent {
+  background: linear-gradient(90deg, #ea580c, #dc2626);
+  /* Gradient button from orange to red-orange */
+  color: white;
+}
+
+.btn-accent:hover {
+  background: linear-gradient(90deg, #dc2626, #ea580c);
+}
+
+.select,
+.input {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-color: rgba(5, 150, 105, 0.3);
+}
+
+.select:focus,
+.input:focus {
+  border-color: #059669;
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+}
