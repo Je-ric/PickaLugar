@@ -11,6 +11,9 @@ Picka-Lugar-PH is a fun and user-friendly address selector built for the **Phili
 So it could mean:  
 👉 **"Pick a Place Philippines"** — fun, local, and easy to remember.
 
+## 📸 Screenshot
+![PickaLugar-PH Screenshot](src/screenshot.png)
+
 # Location Selector - Philippines
-### PH Location JSON file from https://github.com/isaacdarcilla/philippine-addresses
+### PH Location JSON file from [isaacdarcilla/philippine-addresses](https://github.com/isaacdarcilla/philippine-addresses)
 
